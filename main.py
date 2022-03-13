@@ -21,7 +21,7 @@ MOD = None
 logging.basicConfig(level=logging.INFO)
 
 # Komutlar İcin Botu Tanıtma
-K_G = Client(
+app = Client(
 	"Pyrogram Bot",
 	bot_token=B_TOKEN,
 	api_id=API_ID,
