@@ -2,11 +2,11 @@
 
 
 # Bot Hakkında
-**Pyrogram Bot Api Kullanılarak yazılmış basit telegram doğruluk mu? cesaret mi? oyun botu!**
+**Pyrogram Bot Api Kullanılarak yazılmış basit telegram doğruluk oyun botu!**
 
 # Heroku'da Clonlamak
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Gecekus/deneme)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/amahocam/Telagram-Do-ruluk-Oyun-Botu)
 
 ## Alanları Doldurma
 * ``BOT_TOKEN``: Botunuzun tokeni t.me/botfather alınız!
