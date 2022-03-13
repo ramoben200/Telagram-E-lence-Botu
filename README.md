@@ -2,7 +2,7 @@
 
 
 # Bot Hakkında
-**Pyrogram Bot Api Kullanılarak yazılmış basit telegram doğruluk oyun botu!**
+**Pyrogram Bot Api Kullanılarak yazılmış basit telegram eğlence oyun botu!**
 
 # Heroku'da Clonlamak
 
