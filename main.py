@@ -35,7 +35,7 @@ def button():
 	return InlineKeyboardMarkup(BUTTON)
 
 # Kullanıcı Start Komutunu Kullanınca Selam'layalım :)
-@K_G.on_message(filters.command("start"))
+@Client.on_message(filters.command("start"))
 async def _(client, message):
 	user = message.from_user # Kullanıcın Kimliğini Alalım
 
@@ -53,7 +53,7 @@ def d_or_s(user_id):
 	return InlineKeyboardMarkup(BUTTON)
 
 # Dc Komutunu Oluşturalım
-@K_G.on_message(filters.command("dc"))
+@Client.on_message(filters.command("dc"))
 async def _(client, message):
 	user = message.from_user
 
@@ -62,7 +62,7 @@ async def _(client, message):
 		)
 
 # Buttonlarımızı Yetkilendirelim
-@K_G.on_callback_query()
+@Client.on_callback_query()
 async def _(client, callback_query):
 	d_soru=random.choice(D_LİST) # Random Bir Doğruluk Sorusu Seçelim
 	s_soru=random.choice(S_LİST) # Random Bir Cesaret Sorusu Seçelim
@@ -98,7 +98,7 @@ async def _(client, callback_query):
 
 ############################
     # Sudo islemleri #
-@K_G.on_message(filters.command("cekle"))
+@Client.on_message(filters.command("cekle"))
 async def _(client, message):
   global MOD
   user = message.from_user
@@ -109,7 +109,7 @@ async def _(client, message):
   MOD="cekle"
   await message.reply_text("**[⛔]** **Eklenmesini istedigin Cesaret Sorunu Giriniz!**")
   
-@K_G.on_message(filters.command("dekle"))
+@Client.on_message(filters.command("dekle"))
 async def _(client, message):
   global MOD
   user = message.from_user
@@ -120,7 +120,7 @@ async def _(client, message):
   MOD="cekle"
   await message.reply_text("**[⛔]** **Eklenmesini istedigin Dogruluk Sorunu Giriniz!**")
 
-@K_G.on_message(filters.private)
+@Client.on_message(filters.private)
 async def _(client, message):
   global MOD
   global S_LİST
@@ -141,4 +141,4 @@ async def _(client, message):
       return
 ############################
 
-K_G.run() # Botumuzu Calıştıralım :)
+app.run() # Botumuzu Calıştıralım :)
