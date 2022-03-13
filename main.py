@@ -21,7 +21,7 @@ MOD = None
 logging.basicConfig(level=logging.INFO)
 
 # Komutlar İcin Botu Tanıtma
-app = Client(
+K_G = Client(
 	"Pyrogram Bot",
 	bot_token=B_TOKEN,
 	api_id=API_ID,
@@ -35,7 +35,7 @@ def button():
 	return InlineKeyboardMarkup(BUTTON)
 
 # Kullanıcı Start Komutunu Kullanınca Selam'layalım :)
-@Client.on_message(filters.command("start"))
+@K_G.on_message(filters.command("start"))
 async def _(client, message):
 	user = message.from_user # Kullanıcın Kimliğini Alalım
 
@@ -53,7 +53,7 @@ def d_or_s(user_id):
 	return InlineKeyboardMarkup(BUTTON)
 
 # Dc Komutunu Oluşturalım
-@Client.on_message(filters.command("dc"))
+@K_G.on_message(filters.command("dc"))
 async def _(client, message):
 	user = message.from_user
 
@@ -62,7 +62,7 @@ async def _(client, message):
 		)
 
 # Buttonlarımızı Yetkilendirelim
-@Client.on_callback_query()
+@K_G.on_callback_query()
 async def _(client, callback_query):
 	d_soru=random.choice(D_LİST) # Random Bir Doğruluk Sorusu Seçelim
 	s_soru=random.choice(S_LİST) # Random Bir Cesaret Sorusu Seçelim
@@ -98,7 +98,7 @@ async def _(client, callback_query):
 
 ############################
     # Sudo islemleri #
-@Client.on_message(filters.command("cekle"))
+@K_G.on_message(filters.command("cekle"))
 async def _(client, message):
   global MOD
   user = message.from_user
@@ -109,7 +109,7 @@ async def _(client, message):
   MOD="cekle"
   await message.reply_text("**[⛔]** **Eklenmesini istedigin Cesaret Sorunu Giriniz!**")
   
-@Client.on_message(filters.command("dekle"))
+@K_G.on_message(filters.command("dekle"))
 async def _(client, message):
   global MOD
   user = message.from_user
@@ -120,7 +120,7 @@ async def _(client, message):
   MOD="cekle"
   await message.reply_text("**[⛔]** **Eklenmesini istedigin Dogruluk Sorunu Giriniz!**")
 
-@Client.on_message(filters.private)
+@K_G.on_message(filters.private)
 async def _(client, message):
   global MOD
   global S_LİST
@@ -141,4 +141,4 @@ async def _(client, message):
       return
 ############################
 
-app.run() # Botumuzu Calıştıralım :)
+K_G.run() # Botumuzu Calıştıralım :)
