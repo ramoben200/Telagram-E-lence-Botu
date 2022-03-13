@@ -1,15 +1,5 @@
 
-----
 
-<div align="center">
-  <img src="https://github.com/AkinYoungSoftware/TgEglenceBot/raw/master/logo.png" width="300" height="300">
-  <h1>Telegram Doğruluk mu? Cesaret mi? Oyun Botu</h1>
-</div>
-<p align="center">
-        <a href="https://telegram.dog/TgEglence_Bot">~Bot~</a>
-</p>
-
-----
 
 # Bot Hakkında
 **Pyrogram Bot Api Kullanılarak yazılmış basit telegram doğruluk mu? cesaret mi? oyun botu!**
