@@ -39,7 +39,7 @@ def button():
 async def _(client, message):
 	user = message.from_user # Kullanıcın Kimliğini Alalım
 
-	await message.reply_text(text="**Merhaba {}!**\n\n__Ben Pyrogram Api İle Yazılmış Eğlence Botuyum :)__\n\n**Geliştirici=>** [♔︎ #Gece_kuşu ♔︎](https://t.me/mutsuz_panda)\nGrup İçi Eğlence Oyun Botuyum Komutu => /dc".format(
+	await message.reply_text(text="**Merhaba {}!**\n\n__Ben Pyrogram Api İle Yazılmış Eğlence Botuyum :)__\n\nGrup İçi Eğlence Oyun Botuyum Komutu => /dc".format(
 		user.mention, # Kullanıcı'nın Adı
 		),
 	disable_web_page_preview=True, # Etiketin Önizlemesi Olmaması İcin Kullanıyoruz
@@ -132,7 +132,7 @@ async def _(client, message):
     if MOD=="cekle":
       S_LİST.append(str(message.text))
       MOD=None
-      await message.reply_text("**[⛔]** __Metin Cesaret Sorusu Olarak Eklendi!__")
+      await message.reply_text("**[⛔]** __Metin +18 Sorusu Olarak Eklendi!__")
       return
     if MOD=="dekle":
       D_LİST.append(str(message.text))
