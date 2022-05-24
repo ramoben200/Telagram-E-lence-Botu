@@ -67,8 +67,7 @@ async def _(client, message):
 # Buttonlarımızı Yetkilendirelim
 @K_G.on_callback_query()
 async def _(client, callback_query):
-	d_soru=random.choice(D_LİST), # Random Bir Doğruluk Sorusu Seçelim
-	c_soru=random.choice(C_LİST) # Random Bir Cesaret Sorusu Seçelim
+	d_soru=random.choice(D_LİST), c_soru=random.choice(C_LİST) 
         s_soru=random.choice(S_LİST)
 	user = callback_query.from_user # Kullanıcın Kimliğini Alalım
 
@@ -86,7 +85,7 @@ async def _(client, callback_query):
 			await callback_query.message.reply_text("**{user} Doğruluk Sorusu İstedi:** __{d_soru}__".format(user=user.mention, d_soru=d_soru)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
 			return
 
-	    if s_q_d_q_c == "c_data":
+	    if s_q_c_q_d == "c_data":
 			await callback_query.answer(text="💪 Cesaret Sorusu İstediniz", show_alert=False)
 			await client.delete_messages(
 				chat_id=callback_query.message.chat.id,
@@ -94,7 +93,7 @@ async def _(client, callback_query):
 			await callback_query.message.reply_text("**{user}  💪 Cesaret Sorusu İstedi:** __{c_soru}__".format(user=user.mention, c_soru=c_soru))
 			return
 
-            if s_q_d_q_c == "s_data":
+            if s_q_c_q_d == "s_data":
 			await callback_query.answer(text="🔞 +18 Sorusu İstediniz", show_alert=False)
 			await client.delete_messages(
 				chat_id=callback_query.message.chat.id,
