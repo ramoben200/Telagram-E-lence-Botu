@@ -47,13 +47,13 @@ async def _(client, message):
 	)
 
 # Dc Komutu İcin Olan Buttonlar
-def d_or_s(user_id):
-	BUTTON = [[
-                   InlineKeyboardButton(text="✅ Doğruluk", callback_data = " ".join(["d_data",str(user_id)])), 
-                   InlineKeyboardButton(text="💪 Cesaret", callback_data = " ".join(["c_data",str(user_id)]))
-                 ]]
-	BUTTON += [[InlineKeyboardButton(text="🔞 +18 Soru", callback_data = " ".join(["s_data",str(user_id)]))]]
-	return InlineKeyboardMarkup(BUTTON)
+def d_or_s_or_c(user_id):
+	     BUTTON = [[
+                        InlineKeyboardButton(text="✅ Doğruluk", callback_data = " ".join(["d_data",str(user_id)])), 
+                        InlineKeyboardButton(text="💪 Cesaret", callback_data = " ".join(["c_data",str(user_id)]))
+                      ]]
+	     BUTTON += [[InlineKeyboardButton(text="🔞 +18 Soru", callback_data = " ".join(["s_data",str(user_id)]))]]
+	     return InlineKeyboardMarkup(BUTTON)
 
 # Dc Komutunu Oluşturalım
 @K_G.on_message(filters.command("dc"))
@@ -61,7 +61,7 @@ async def _(client, message):
 	user = message.from_user
 
 	await message.reply_text(text="{} İstediğin Soru Tipini Seç!".format(user.mention),
-		reply_markup=d_or_s(user.id)
+		reply_markup=d_or_s_or_c(user.id)
 		)
 
 # Buttonlarımızı Yetkilendirelim
