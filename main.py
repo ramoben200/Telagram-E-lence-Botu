@@ -77,30 +77,30 @@ async def _(client, callback_query):
 	# Sorunun Sorulmasını İsteyen Kişinin Komutu Kullanan Kullanıcı Olup Olmadığını Kontrol Edelim
 	if str(user.id) == str(user_id):
 		# Kullanıcının Doğruluk Sorusu İstemiş İse Bu Kısım Calışır
-	    if s_q_c_q_d == "d_data":
-			await callback_query.answer(text="Doğruluk Sorusu İstediniz", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
-			await client.delete_messages(
-				chat_id=callback_query.message.chat.id,
-				message_ids=callback_query.message.message_id) # Eski Mesajı Silelim
+	        if s_q_c_q_d == "d_data":
+			    await callback_query.answer(text="Doğruluk Sorusu İstediniz", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
+			    await client.delete_messages(
+				    chat_id=callback_query.message.chat.id,
+				    message_ids=callback_query.message.message_id) # Eski Mesajı Silelim
 
-			await callback_query.message.reply_text("**{user} Doğruluk Sorusu İstedi:** __{d_soru}__".format(user=user.mention, d_soru=d_soru)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
-			return
+			    await callback_query.message.reply_text("**{user} Doğruluk Sorusu İstedi:** __{d_soru}__".format(user=user.mention, d_soru=d_soru)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
+			    return
 
-	    if s_q_c_q_d == "c_data":
-			await callback_query.answer(text="💪 Cesaret Sorusu İstediniz", show_alert=False)
-			await client.delete_messages(
-				chat_id=callback_query.message.chat.id,
-				message_ids=callback_query.message.message_id)
-			await callback_query.message.reply_text("**{user}  💪 Cesaret Sorusu İstedi:** __{c_soru}__".format(user=user.mention, c_soru=c_soru))
-			return
+	        if s_q_c_q_d == "c_data":
+			    await callback_query.answer(text="💪 Cesaret Sorusu İstediniz", show_alert=False)
+			    await client.delete_messages(
+				    chat_id=callback_query.message.chat.id,
+				    message_ids=callback_query.message.message_id)
+			    await callback_query.message.reply_text("**{user}  💪 Cesaret Sorusu İstedi:** __{c_soru}__".format(user=user.mention, c_soru=c_soru))
+			    return
 
-            if s_q_c_q_d == "s_data":
-			await callback_query.answer(text="🔞 +18 Sorusu İstediniz", show_alert=False)
-			await client.delete_messages(
-				chat_id=callback_query.message.chat.id,
-				message_ids=callback_query.message.message_id)
-			await callback_query.message.reply_text("**{user} 🔞 +18 Sorusu İstedi:** __{s_soru}__".format(user=user.mention, s_soru=s_soru))
-			return
+                if s_q_c_q_d == "s_data":
+			    await callback_query.answer(text="🔞 +18 Sorusu İstediniz", show_alert=False)
+			    await client.delete_messages(
+				    chat_id=callback_query.message.chat.id,
+				    message_ids=callback_query.message.message_id)
+			    await callback_query.message.reply_text("**{user} 🔞 +18 Sorusu İstedi:** __{s_soru}__".format(user=user.mention, s_soru=s_soru))
+			    return
 
 
 	# Buttonumuza Tıklayan Kisi Komut Calıştıran Kişi Değil İse Uyarı Gösterelim
