@@ -67,8 +67,9 @@ async def _(client, message):
 # Buttonlarımızı Yetkilendirelim
 @K_G.on_callback_query()
 async def _(client, callback_query):
-	d_soru=random.choice(D_LİST) # Random Bir Doğruluk Sorusu Seçelim
-	c_soru=random.choice(C_LİST), s_soru=random.choice(S_LİST) 
+	d_soru=random.choice(D_LİST) 
+	c_soru=random.choice(C_LİST) 
+        s_soru=random.choice(S_LİST) 
 	user = callback_query.from_user # Kullanıcın Kimliğini Alalım
 
 	s_q_c_q_d, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
