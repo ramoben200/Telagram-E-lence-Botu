@@ -14,11 +14,15 @@
     "OWNER_API_HASH": {
       "description": "API_HASH'iniz https://my.telegram.org/apps dan ala bilirsiniz"
     },
-    "sahib": {
+    "OWNER": {
          "description": "Kendi kullanıcı adınızı yazınız @ işareti olmadan",
          "value": "mutsuz_panda"
+    },
+    "BOT_USERNAME": {
+         "description": "Botun kullanıcı adınızı yazınız @ işareti olmadan",
+         "value": "mutsuz_panda"
     },      
-    "support": {
+    "SUPPORT": {
          "description": "Bura support grubunuz yada kanalınızın kullanıcı adı @ işareti olmadan yazın",
          "value": "Richard_Ramirezzblog"
 
