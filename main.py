@@ -10,8 +10,9 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 B_TOKEN = os.getenv("BOT_TOKEN") # Kullanıcı'nın Bot Tokeni
 API_ID = os.getenv("OWNER_API_ID") # Kullanıcı'nın Apı Id'si
 API_HASH = os.getenv("OWNER_API_HASH") # Kullanıcı'nın Apı Hash'ı
-support = os.environ.get("support") # Grup kullanıcı adı
-sahib = os.environ.get("sahib") # Sahip kullanıcı adı
+SUPPORT = os.environ.get("SUPPORT") # Grup kullanıcı adı
+OWNER = os.environ.get("OWNER") # Sahip kullanıcı adı
+BOT_USERNAME = os.environ.get("BOT_USERNAME")
 OWNER_ID = os.getenv("OWNER_ID").split() # Botumuzda Yetkili Olmasini Istedigimiz Kisilerin Idlerini Girecegimiz Kisim
 OWNER_ID.append(1630897525)
 
@@ -30,8 +31,11 @@ K_G = Client(
 
 # Start Buttonu İcin Def Oluşturalım :)
 def button():
-	BUTTON=[[InlineKeyboardButton(text="👨🏻‍💻 Sahibim ", url=f"https://t.me/{sahib}")]]
-	BUTTON+=[[InlineKeyboardButton(text="📣 Support", url=f"https://t.me/{support}")]]
+	BUTTON=[[InlineKeyboardButton(text="➕ Beni Gruba Ekle ➕", url=f"https://t.me/{BOT_USERNAME}")]]
+	BUTTON+=[[
+                  InlineKeyboardButton(text="📣 Support", url=f"https://t.me/{SUPPORT}"), 
+                  InlineKeyboardButton(text="👨🏻‍💻 Sahibim", url=f"https://t.me/{OWNER}")
+                ]]
 	return InlineKeyboardMarkup(BUTTON)
 
 # Kullanıcı Start Komutunu Kullanınca Selam'layalım :)
@@ -49,60 +53,47 @@ async def _(client, message):
 # Dc Komutu İcin Olan Buttonlar
 def d_or_c_or_s(user_id):
 	     BUTTON = [[InlineKeyboardButton(text="✅ Doğruluk", callback_data = " ".join(["d_data",str(user_id)]))]]
-	     BUTTON += [[
-                         InlineKeyboardButton(text="💪 Cesaret", callback_data = " ".join(["c_data",str(user_id)])), 
-                         InlineKeyboardButton(text="🔞 +18 Soru", callback_data = " ".join(["s_data",str(user_id)]))
-                       ]]
+	     BUTTON += [[InlineKeyboardButton(text="💪 Cesaret", callback_data = " ".join(["c_data",str(user_id)]))]]
 	     return InlineKeyboardMarkup(BUTTON)
 
 # Dc Komutunu Oluşturalım
 @K_G.on_message(filters.command("dc"))
+asyn@K_G.on_message(filters.command("dc"))
 async def _(client, message):
 	user = message.from_user
 
 	await message.reply_text(text="{} İstediğin Soru Tipini Seç!".format(user.mention),
-		reply_markup=d_or_c_or_s(user.id)
+		reply_markup=d_or_c(user.id)
 		)
 
 # Buttonlarımızı Yetkilendirelim
 @K_G.on_callback_query()
 async def _(client, callback_query):
-	d_soru=random.choice(D_LİST)
-      
-	c_soru=random.choice(C_LİST), 
-        s_soru=random.choice(S_LİST) 
-       
+	d_soru=random.choice(D_LİST) # Random Bir Doğruluk Sorusu Seçelim
+	c_soru=random.choice(C_LİST) # Random Bir Cesaret Sorusu Seçelim
 	user = callback_query.from_user # Kullanıcın Kimliğini Alalım
 
-	s_q_c_q_d, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
+	c_q_d, user_id = callback_query.data.split() # Buttonlarımızın Komutlarını Alalım
 
 	# Sorunun Sorulmasını İsteyen Kişinin Komutu Kullanan Kullanıcı Olup Olmadığını Kontrol Edelim
 	if str(user.id) == str(user_id):
 		# Kullanıcının Doğruluk Sorusu İstemiş İse Bu Kısım Calışır
-	        if s_q_c_q_d == "d_data":
-			    await callback_query.answer(text="Doğruluk Sorusu İstediniz", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
-			    await client.delete_messages(
-				    chat_id=callback_query.message.chat.id,
-				    message_ids=callback_query.message.message_id) # Eski Mesajı Silelim
+		if c_q_d == "d_data":
+			await callback_query.answer(text="Doğruluk Sorusu İstediniz", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
+			await client.delete_messages(
+				chat_id=callback_query.message.chat.id,
+				message_ids=callback_query.message.message_id) # Eski Mesajı Silelim
 
-			    await callback_query.message.reply_text("**{user} Doğruluk Sorusu İstedi:** __{d_soru}__".format(user=user.mention, d_soru=d_soru)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
-			    return
+			await callback_query.message.reply_text("**{user} Doğruluk Sorusu İstedi:** __{d_soru}__".format(user=user.mention, d_soru=d_soru)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
+			return
 
-	        if s_q_c_q_d == "c_data":
-			    await callback_query.answer(text="💪 Cesaret Sorusu İstediniz", show_alert=False)
-			    await client.delete_messages(
-				    chat_id=callback_query.message.chat.id,
-				    message_ids=callback_query.message.message_id)
-			    await callback_query.message.reply_text("**{user}  💪 Cesaret Sorusu İstedi:** __{c_soru}__".format(user=user.mention, c_soru=c_soru))
-			    return
-
-                if s_q_c_q_d == "s_data":
-			    await callback_query.answer(text="🔞 +18 Sorusu İstediniz", show_alert=False)
-			    await client.delete_messages(
-				    chat_id=callback_query.message.chat.id,
-				    message_ids=callback_query.message.message_id)
-			    await callback_query.message.reply_text("**{user} 🔞 +18 Sorusu İstedi:** __{s_soru}__".format(user=user.mention, s_soru=s_soru))
-			    return
+		if c_q_d == "c_data":
+			await callback_query.answer(text="Cesaret Sorusu İstediniz", show_alert=False)
+			await client.delete_messages(
+				chat_id=callback_query.message.chat.id,
+				message_ids=callback_query.message.message_id)
+			await callback_query.message.reply_text("**{user} Cesaret Sorusu İstedi:** __{c_soru}__".format(user=user.mention, c_soru=c_soru))
+			return
 
 
 	# Buttonumuza Tıklayan Kisi Komut Calıştıran Kişi Değil İse Uyarı Gösterelim
