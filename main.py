@@ -2,7 +2,7 @@
 import os
 import logging
 import random
-from sorular import D_LİST, C_LİST, S_LİST 
+from sorular import D_LİST, C_LİST 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 # ============================ #
@@ -31,7 +31,7 @@ K_G = Client(
 
 # Start Buttonu İcin Def Oluşturalım :)
 def button():
-	BUTTON=[[InlineKeyboardButton(text="➕ Beni Gruba Ekle ➕", url=f"https://t.me/{BOT_USERNAME}")]]
+	BUTTON=[[InlineKeyboardButton(text="➕ Beni Gruba Ekle ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")]]
 	BUTTON+=[[
                   InlineKeyboardButton(text="📣 Support", url=f"https://t.me/{SUPPORT}"), 
                   InlineKeyboardButton(text="👨🏻‍💻 Sahibim", url=f"https://t.me/{OWNER}")
