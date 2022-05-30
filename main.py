@@ -54,11 +54,10 @@ async def _(client, message):
 def d_or_c_or_s(user_id):
 	     BUTTON = [[InlineKeyboardButton(text="✅ Doğruluk", callback_data = " ".join(["d_data",str(user_id)]))]]
 	     BUTTON += [[InlineKeyboardButton(text="💪 Cesaret", callback_data = " ".join(["c_data",str(user_id)]))]]
-	     return InlineKeyboardMarkup(BUTTON)
+	     return InlineKeyboardMarkup(BUTTON) 
 
-# Dc Komutunu Oluşturalım
+
 @K_G.on_message(filters.command("dc"))
-asyn@K_G.on_message(filters.command("dc"))
 async def _(client, message):
 	user = message.from_user
 
