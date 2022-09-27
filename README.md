@@ -6,7 +6,7 @@
 
 # Heroku'da Clonlamak
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/amahocam/Telagram-E-lence-Botu)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ramoben200/Telagram-E-lence-Botu)
 
 ## Alanları Doldurma
 * ``BOT_TOKEN``: Botunuzun tokeni t.me/botfather alınız!
