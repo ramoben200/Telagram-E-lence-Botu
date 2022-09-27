@@ -15,9 +15,3 @@
 * ``OWNER_USERNAME``: Sizin kullanıcı adınız @ işareti olmadan
 * ``SUPPORT`` : Grup veya Kanal kullanıcı adı @ işareti olmadan
 
-
-
-# İletişim
-Şikayet, bağış v.b. için benim ile telegram'dan iletişime geç [@mutsuz_panda](https://t.me/mutsuz_panda)
-
-
